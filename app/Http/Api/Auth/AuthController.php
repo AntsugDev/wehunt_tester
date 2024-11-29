@@ -6,8 +6,6 @@ use App\Http\Api\Auth\Request\AuthRequest;
 use App\Http\Api\Auth\Request\UserRefreshRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Utils\AuthTrait;
-use App\Http\Utils\CustomLogger;
-use App\Http\Utils\KeycloakTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -18,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
-    use AuthTrait, KeycloakTrait;
+    use AuthTrait;
 
     /**
      * @throws \Exception
@@ -145,10 +143,6 @@ class AuthController extends Controller
             $user = \request()->user();
             $role = $user->roles()->get()->pluck('name')->toArray();
             Cache::delete($user->id.'_enter_at');
-            if(count($role) > 0 && strcmp($role[0],'sso') === 0) {
-                $this->getLogout();
-            }
-
             $oauthAccess = $user->tokens()->get();
             $oauthAccess->each(function ($item) {
                 $item->revoked = true;

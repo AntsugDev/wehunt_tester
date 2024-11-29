@@ -42,9 +42,6 @@ onBeforeMount(() => {
     if(!isRoot.value) {
         store.commit('config/changeMini')
     }
-    if(accessToken.value === null){
-        router.push({name:'AccessToken'})
-    }
 })
 </script>
 <style scoped lang="css">

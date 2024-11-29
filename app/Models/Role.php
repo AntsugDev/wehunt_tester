@@ -28,8 +28,8 @@ class Role extends Model
     /**
      * @throws \Exception
      */
-    public static function getSSO (){
-        $role = self::where('name','=','sso')->get()->pluck('id')->toArray();
+    public static function getGuest (){
+        $role = self::where('name','=','guest')->get()->pluck('id')->toArray();
         if(count($role) > 0) return $role[0];
         else throw new \Exception("Role not found",404);
     }

@@ -7,7 +7,7 @@
         ></v-app-bar-nav-icon>
         <v-toolbar-title :class="getColor.class+ ' text-uppercase font-weight-bold'"
                          :style="'color:'+getColor.fontColor+';width:350px!important'"
-        >Issue Project</v-toolbar-title>
+        >Project Tester</v-toolbar-title>
         <div class="imgDiv" v-if="!getColor.role">
             <v-img  width="auto" height="58px" src="/img/logo"></v-img>
         </div>

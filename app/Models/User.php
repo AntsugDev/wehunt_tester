@@ -26,9 +26,6 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
-        "keycloack_id",
-        "cod_anagen",
-        "access_token"
     ];
 
     /**

@@ -18,8 +18,8 @@ class RoleSeeders extends Seeder
             "label" =>"Root"
         ]);
         Role::create([
-            "name" => "sso",
-            "label" =>"SSO"
+            "name" => "guest",
+            "label" =>"Guest"
         ]);
     }
 }

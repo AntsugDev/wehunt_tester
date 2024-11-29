@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from "vue-router";
 import Home from "../component/Home.vue";
 import Login from "../component/Login/Login.vue";
 import ErrorPage from "../component/Login/ErrorPage.vue";
+import IndexList from "../component/List/IndexList.vue";
 
 export const router = createRouter({
     history: createWebHistory(),
@@ -26,6 +27,12 @@ export const router = createRouter({
             component: Home,
             meta: {requiresAuth: true},
             children:[
+                {
+                    path:'/list',
+                    name: 'IndexList',
+                    component: IndexList,
+                    children:[]
+                },
             ]
         },
         {
