@@ -49,11 +49,6 @@
                 ></v-list-item>
             </v-list>
         </template>
-        <template v-slot:append v-if="getColor.role">
-            <div class="pa-2 mb-5">
-                <v-btn to="/swagger/documentation" icon="mdi-api" target="_blank" alt="Documentation" title="Documentation"></v-btn>
-            </div>
-        </template>
     </v-navigation-drawer>
 </template>
 <script setup>
