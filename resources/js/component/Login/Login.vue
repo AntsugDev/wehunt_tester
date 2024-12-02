@@ -32,10 +32,10 @@
 </template>
 <script setup>
 import {rulesEmail, rulesRequired} from "../../utils/rules.js";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import Title from "../common/Title.vue";
 import {api} from "../../api/index.js";
-import {useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {useStore} from "vuex";
 import {LoadRelationship} from "../../utils/LoadRelationship.js";
 import PageBase from "../common/PageBase.vue";
@@ -47,6 +47,7 @@ const form = ref({
 })
 const loading = ref(false)
 const router = useRouter();
+const route = useRoute();
 const store = useStore()
 const login = () => {
     loading.value = true
@@ -69,6 +70,37 @@ const login = () => {
     })
 
 }
+
+const logoutRoot = async () => {
+    await api('at/logout','GET')
+    store.commit('user/clear')
+}
+
+onMounted(() => {
+
+    if(route.query.error !== undefined){
+        store.commit('snackbar/update',{
+            show:true,
+            color:'error',
+            text:atob(route.query.error),
+            button:true,
+            preicon: "mdi-alert-outline"
+        })
+    }
+
+    if(route.query.logout !== undefined){
+        if(route.query.error === undefined)
+            store.commit('snackbar/update',{
+                show:true,
+                color:'success',
+                text:"Logout effettuato",
+            })
+        logoutRoot();
+    }
+
+})
+
+
 </script>
 <style scoped lang="css">
 
