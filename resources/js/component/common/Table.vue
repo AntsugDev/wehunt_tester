@@ -18,8 +18,8 @@
 <script setup>
 defineProps({
     search:{
-      type:[String,null],
-      default: ""
+        type:[String,null],
+        default: ""
     },
     loading:{
         type:[Boolean,null],

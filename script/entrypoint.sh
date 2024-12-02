@@ -10,6 +10,5 @@ if [ -f /var/www/html/database.sqlite ]; then
 fi
 
 php artisan cache:clear
-#php artisan queue:work --daemon &
 
 exec "$@"

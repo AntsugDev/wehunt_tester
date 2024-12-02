@@ -21,12 +21,5 @@ class UserSeeders extends Seeder
             'password' => "root@123",
             'role_id' =>$roleId
         ]);
-        $roleGuest = Role::getGuest();
-        User::create([
-            'name' => "guest",
-            'email' => "guest@guest.it",
-            'password' => "guest@123",
-            'role_id' =>$roleGuest
-        ]);
     }
 }
